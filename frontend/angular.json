@@ -35,6 +35,12 @@
             "scripts": []
           },
           "configurations": {
+            "local": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -88,9 +94,12 @@
             },
             "development": {
               "buildTarget": "sfquiz-frontend:build:development"
+            },
+            "local": {
+              "buildTarget": "sfquiz-frontend:build:local"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "local"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
