@@ -1,0 +1,58 @@
+<div class="page">
+  <div class="header">
+    <div class="header-icon">📚</div>
+    <h1>SAP SF Quiz</h1>
+    <p class="subtitle">Test your Employee Central knowledge</p>
+  </div>
+
+  <div class="card">
+    @if (loading) {
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading topics…</p>
+      </div>
+    } @else {
+      @if (errorMessage) {
+        <div class="error-banner">{{ errorMessage }}</div>
+      }
+
+      <div class="field">
+        <label for="topic-select">Topic</label>
+        <select id="topic-select" [(ngModel)]="selectedTopic" (ngModelChange)="onTopicChange()">
+          <option value="" disabled>Choose a topic…</option>
+          @for (t of topics; track t.topic) {
+            <option [value]="t.topic">{{ t.topic }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Number of Questions</label>
+        <div class="pill-group">
+          @for (limit of limits; track limit) {
+            <button
+              class="pill"
+              [class.active]="selectedLimit === limit"
+              [disabled]="limit > selectedTopicCount"
+              (click)="setLimit(limit)"
+              type="button">
+              {{ limit }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <button
+        class="btn-primary"
+        [disabled]="!selectedTopic || starting"
+        (click)="startQuiz()"
+        type="button">
+        @if (starting) {
+          <span class="btn-spinner"></span> Loading…
+        } @else {
+          Start Quiz
+        }
+      </button>
+    }
+  </div>
+</div>

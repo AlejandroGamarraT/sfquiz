@@ -1,0 +1,32 @@
+# ── macOS ──────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ── Backend (Maven / Spring Boot) ──────
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+!backend/.mvn/wrapper/maven-wrapper.properties
+backend/*.log
+
+# ── Frontend (Angular / Node) ───────────
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/*.log
+
+# ── Secrets / Environment ───────────────
+application-local.properties
+application-prod.properties
+.env
+.env.*
+
+# ── IDE / Editor ────────────────────────
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# ── Claude Code ─────────────────────────
+.claude/settings.local.json

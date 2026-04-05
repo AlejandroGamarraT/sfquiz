@@ -1,0 +1,68 @@
+<div class="result-page">
+  @if (sessionScore) {
+    <!-- Score Card -->
+    <div class="score-card" [class.high]="scorePercent >= 80" [class.mid]="scorePercent >= 50 && scorePercent < 80" [class.low]="scorePercent < 50">
+      <div class="score-emoji">
+        @if (scorePercent >= 80) { 🏆 }
+        @else if (scorePercent >= 50) { 💪 }
+        @else { 📖 }
+      </div>
+      <h1>{{ scorePercent >= 80 ? 'Great job!' : scorePercent >= 50 ? 'Keep it up!' : 'Keep studying!' }}</h1>
+      <div class="score-fraction">{{ sessionScore.correctCount }} / {{ sessionScore.totalQuestions }}</div>
+      <div class="score-percent">{{ scorePercent }}% correct</div>
+      <div class="score-track">
+        <div class="score-fill" [style.width.%]="scorePercent"></div>
+      </div>
+    </div>
+
+    @if (errorMessage) {
+      <div class="error-banner">{{ errorMessage }}</div>
+    }
+
+    <!-- Action Buttons -->
+    <div class="action-row">
+      <button class="btn-secondary" (click)="newQuiz()" type="button">
+        New Quiz
+      </button>
+      <button class="btn-primary" (click)="retry()" [disabled]="retrying" type="button">
+        @if (retrying) {
+          <span class="btn-spinner"></span> Loading…
+        } @else {
+          Retry
+        }
+      </button>
+    </div>
+
+    <!-- Review -->
+    <div class="section-label">Review</div>
+    <div class="review-list">
+      @for (question of sessionScore.answeredQuestions; track question.id; let i = $index) {
+        <div class="review-card" [class.is-correct]="isCorrect(question)" [class.is-wrong]="!isCorrect(question)">
+          <div class="review-header">
+            <span class="q-num">Q{{ i + 1 }}</span>
+            <span class="badge" [class.correct]="isCorrect(question)" [class.wrong]="!isCorrect(question)">
+              {{ isCorrect(question) ? '✓ Correct' : '✗ Incorrect' }}
+            </span>
+          </div>
+
+          <p class="review-question">{{ question.questionText }}</p>
+
+          @if (!isCorrect(question)) {
+            <div class="your-answer">
+              Your answer: <strong>{{ getUserAnswer(question)?.selectedOption }}</strong>
+            </div>
+          }
+
+          <div class="correct-answer">
+            Correct: <strong>{{ question.correctOption }}</strong>
+          </div>
+
+          <div class="explanation">
+            <span class="explanation-label">Explanation</span>
+            {{ getCorrectExplanation(question) }}
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

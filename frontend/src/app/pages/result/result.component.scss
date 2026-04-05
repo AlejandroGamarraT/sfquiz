@@ -1,0 +1,233 @@
+.result-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+/* ── Score Card ── */
+.score-card {
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+
+  &.high {
+    background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+    .score-fill { background: #16A34A; }
+    .score-fraction { color: #15803D; }
+  }
+
+  &.mid {
+    background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+    .score-fill { background: #D97706; }
+    .score-fraction { color: #B45309; }
+  }
+
+  &.low {
+    background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
+    .score-fill { background: #DC2626; }
+    .score-fraction { color: #B91C1C; }
+  }
+}
+
+.score-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.score-card h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.score-fraction {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.score-percent {
+  font-size: 0.95rem;
+  color: #64748B;
+  margin-bottom: 1rem;
+}
+
+.score-track {
+  height: 8px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+/* ── Action Row ── */
+.action-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+  flex: 1;
+  padding: 0.875rem;
+  background: #2563EB;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 52px;
+
+  &:hover:not(:disabled) { background: #1D4ED8; }
+  &:active:not(:disabled) { transform: scale(0.98); }
+  &:disabled { background: #93C5FD; cursor: not-allowed; }
+}
+
+.btn-secondary {
+  flex: 1;
+  padding: 0.875rem;
+  background: #fff;
+  color: #2563EB;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  min-height: 52px;
+
+  &:hover {
+    background: #EFF6FF;
+    border-color: #2563EB;
+  }
+}
+
+/* ── Review ── */
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #94A3B8;
+  margin-bottom: 0.75rem;
+  padding-left: 0.25rem;
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.review-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border-left: 4px solid transparent;
+
+  &.is-correct { border-left-color: #16A34A; }
+  &.is-wrong   { border-left-color: #DC2626; }
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.q-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94A3B8;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+
+  &.correct { background: #F0FDF4; color: #16A34A; }
+  &.wrong   { background: #FEF2F2; color: #DC2626; }
+}
+
+.review-question {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #0F172A;
+  line-height: 1.5;
+  margin: 0 0 0.625rem;
+}
+
+.your-answer {
+  font-size: 0.85rem;
+  color: #DC2626;
+  margin-bottom: 0.25rem;
+}
+
+.correct-answer {
+  font-size: 0.85rem;
+  color: #16A34A;
+  margin-bottom: 0.625rem;
+}
+
+.explanation {
+  font-size: 0.85rem;
+  color: #64748B;
+  line-height: 1.55;
+  background: #F8FAFC;
+  padding: 0.625rem 0.75rem;
+  border-radius: 8px;
+
+  .explanation-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94A3B8;
+    margin-bottom: 0.25rem;
+  }
+}
+
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-banner {
+  background: #FEF2F2;
+  color: #DC2626;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
